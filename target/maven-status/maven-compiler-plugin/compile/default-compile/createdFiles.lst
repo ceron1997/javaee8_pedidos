@@ -1,0 +1,7 @@
+javaee8crud\servicio\ProductosService.class
+javaee8crud\domain\Producto.class
+javaee8crud\datos\ProductosDAO.class
+javaee8crud\web\productoServlet.class
+javaee8crud\JAXRSConfiguration.class
+javaee8crud\web\EliminarProductoServlet.class
+javaee8crud\web\ProductosBean.class

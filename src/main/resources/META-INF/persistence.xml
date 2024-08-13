@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.2" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd">
+  <!-- Define Persistence Unit -->
+  <persistence-unit name="oraclePU" transaction-type="JTA">
+    <!-- Referencia al recurso JDBC configurado en GlassFish -->
+    <jta-data-source>jdbc/OraclePool</jta-data-source>
+    <!-- Clases de entidad -->
+    <!-- Agrega aquí más clases de entidad según tu proyecto -->
+    <!-- Configuraciones adicionales -->
+    <class>javaee8crud.domain.Producto</class>
+    <properties>
+      <!-- Configuración para habilitar logs SQL (opcional) -->
+      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+      <property name="eclipselink.logging.level" value="FINE"/>
+    </properties>
+  </persistence-unit>
+</persistence>
