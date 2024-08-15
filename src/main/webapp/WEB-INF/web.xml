@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
-    <!--servlet y servlet mapping se agrega automaticamente al crear los servlet --> 
+    <!--servlet y servlet mapping se agrega automaticamente al crear los servlet -->
     <servlet>
         <servlet-name>productoServlet</servlet-name>
         <servlet-class>javaee8crud.web.productoServlet</servlet-class>
     </servlet>
-    <servlet>
-        <servlet-name>EliminarProductoServlet</servlet-name>
-        <servlet-class>javaee8crud.web.EliminarProductoServlet</servlet-class>
-    </servlet>
     <servlet-mapping>
         <servlet-name>productoServlet</servlet-name>
         <url-pattern>/productoServlet</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>EliminarProductoServlet</servlet-name>
-        <url-pattern>/EliminarProductoServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

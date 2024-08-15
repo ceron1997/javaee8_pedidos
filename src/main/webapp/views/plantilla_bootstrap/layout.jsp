@@ -20,7 +20,7 @@
                         </li>
                         <li class="nav-item">
 
-                            <a class="nav-link" href="${pageContext.request.contextPath}/views/productos.jsp">Productos</a>
+                            <a class="nav-link" href="${pageContext.request.contextPath}/views/productos/productos.jsp">Productos</a>
                         </li>
 
                         <li class="nav-item">

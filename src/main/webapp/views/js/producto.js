@@ -61,20 +61,15 @@ function limpiarProducto() {
     $('#precio').val('');
 }
 
-function indicadorRojo(elemento) {
-    elemento.css('border', '2px solid red');
 
-    setTimeout(() => {
-        elemento.css('border', '');
-    }, 2000);
-}
 
 function eliminarProducto(id) {
     if (confirm('¿Estás seguro de que deseas eliminar este producto?')) {
         $.ajax({
             type: 'POST',
-            url: contextPath + '/eliminar_producto',
-            data: { id: id },
+            url: contextPath + '/productos',
+            data: { id: id, 
+            action: "delete"},
             success: function(response) {
                 // Manejar la respuesta del servidor
                 if (response.status === 'success') {

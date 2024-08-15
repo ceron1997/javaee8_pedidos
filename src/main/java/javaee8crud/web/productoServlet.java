@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author ncero
  */
-@WebServlet("/productos_save")
+@WebServlet("/productos")
 public class productoServlet extends HttpServlet {
 
     @Inject
@@ -74,7 +74,7 @@ public class productoServlet extends HttpServlet {
             request.setAttribute("producto", new Producto()); // Para el caso de nuevo producto
         }
 
-        request.getRequestDispatcher("/views/nuevo_producto.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/productos/nuevo_producto.jsp").forward(request, response);
 
     }
 
@@ -89,6 +89,43 @@ public class productoServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        String action = request.getParameter("action");
+        if ("delete".equals(action)) {
+            delete(request, response);
+        } else {
+            createOrUpdate(request, response);
+        }
+
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+    // metodos definidos 
+    private void delete(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        // Lógica para eliminar un producto
+        String id = request.getParameter("id");
+        if (id != null && !id.isEmpty()) {
+            int productoId = Integer.parseInt(id);
+            Producto producto = productosService.findProductoById(productoId);
+
+            productosService.eliminarProducto(producto);
+            response.setContentType("application/json");
+            response.getWriter().write("{\"status\":\"success\",\"message\":\"Producto eliminado exitosamente.\"}");
+        } else {
+            response.setContentType("application/json");
+            response.getWriter().write("{\"status\":\"error\",\"message\":\"ID de producto no válido.\"}");
+        }
+    }
+
+    private void createOrUpdate(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String id = request.getParameter("id");
         String nombre = request.getParameter("nombre");
         String precioStr = request.getParameter("precio");
@@ -109,34 +146,19 @@ public class productoServlet extends HttpServlet {
         producto.setPrecio(precio);
 
         try {
-
             if (id == null) {
                 productosService.registrarProducto(producto); // Guardar nuevo producto
-                     response.setContentType("application/json");
-            response.getWriter().write("{\"status\":\"success\",\"message\":\"Producto registrado exitosamente.\"}");
-
+                response.setContentType("application/json");
+                response.getWriter().write("{\"status\":\"success\",\"message\":\"Producto registrado exitosamente.\"}");
             } else {
                 productosService.updateProducto(producto); // Actualizar producto existente
-                     response.setContentType("application/json");
-            response.getWriter().write("{\"status\":\"success\",\"message\":\"Producto actualizado exitosamente.\"}");
-
+                response.setContentType("application/json");
+                response.getWriter().write("{\"status\":\"success\",\"message\":\"Producto actualizado exitosamente.\"}");
             }
-
-       
         } catch (IOException e) {
             response.setContentType("application/json");
-            response.getWriter().write("{\"status\":\"error\",\"message\":\"Error al registrar el producto.\"}");
+            response.getWriter().write("{\"status\":\"error\",\"message\":\"Error al registrar o actualizar el producto.\"}");
         }
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
 
 }
