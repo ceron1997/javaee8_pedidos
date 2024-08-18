@@ -1,6 +1,15 @@
+C:\desarollo\JavaEE8CRUD\src\main\java\javaee8crud\datos\TipoClienteDAO.java
+C:\desarollo\JavaEE8CRUD\src\main\java\javaee8crud\datos\ClienteDAO.java
+C:\desarollo\JavaEE8CRUD\src\main\java\javaee8crud\web\ClientesBean.java
+C:\desarollo\JavaEE8CRUD\src\main\java\javaee8crud\domain\TipoCliente.java
+C:\desarollo\JavaEE8CRUD\src\main\java\javaee8crud\JAXRSConfiguration.java
+C:\desarollo\JavaEE8CRUD\src\main\java\javaee8crud\servicio\ClienteService.java
+C:\desarollo\JavaEE8CRUD\src\main\java\javaee8crud\web\ClienteServlet.java
+C:\desarollo\JavaEE8CRUD\src\main\java\javaee8crud\servicio\TipoClienteService.java
 C:\desarollo\JavaEE8CRUD\src\main\java\javaee8crud\web\ProductosBean.java
 C:\desarollo\JavaEE8CRUD\src\main\java\javaee8crud\datos\ProductosDAO.java
 C:\desarollo\JavaEE8CRUD\src\main\java\javaee8crud\domain\Producto.java
 C:\desarollo\JavaEE8CRUD\src\main\java\javaee8crud\servicio\ProductosService.java
-C:\desarollo\JavaEE8CRUD\src\main\java\javaee8crud\JAXRSConfiguration.java
+C:\desarollo\JavaEE8CRUD\src\main\java\javaee8crud\domain\Cliente.java
 C:\desarollo\JavaEE8CRUD\src\main\java\javaee8crud\web\productoServlet.java
+C:\desarollo\JavaEE8CRUD\src\main\java\javaee8crud\web\TipoClienteBean.java

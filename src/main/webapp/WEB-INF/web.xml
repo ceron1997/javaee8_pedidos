@@ -5,9 +5,17 @@
         <servlet-name>productoServlet</servlet-name>
         <servlet-class>javaee8crud.web.productoServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ClienteServlet</servlet-name>
+        <servlet-class>javaee8crud.web.ClienteServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>productoServlet</servlet-name>
         <url-pattern>/productoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClienteServlet</servlet-name>
+        <url-pattern>/ClienteServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

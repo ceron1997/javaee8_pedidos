@@ -22,7 +22,7 @@ public class ProductosBean {
     @PostConstruct
     public void init() {
         productos = productosService.listarProductos();
-        System.out.println(productos);
+//        System.out.println(productos);
     }
 
     public List<Producto> getProductos() {

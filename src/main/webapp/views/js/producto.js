@@ -37,7 +37,7 @@ function enviarFormulario() {
             // Maneja la respuesta del servidor
             $('#resultado').html('<div class="alert alert-success">' + response.message + '</div>');
 //            alert(id);
-            if (id === null) {
+            if (!id) {
 //                alert('hey');
                 limpiarProducto();
             }

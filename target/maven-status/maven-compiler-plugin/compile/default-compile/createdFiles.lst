@@ -1,6 +1,15 @@
-javaee8crud\servicio\ProductosService.class
 javaee8crud\domain\Producto.class
+javaee8crud\servicio\ClienteService.class
+javaee8crud\domain\TipoCliente.class
+javaee8crud\domain\Cliente.class
+javaee8crud\servicio\ProductosService.class
+javaee8crud\web\ClientesBean.class
+javaee8crud\web\ClienteServlet.class
 javaee8crud\datos\ProductosDAO.class
+javaee8crud\datos\TipoClienteDAO.class
+javaee8crud\servicio\TipoClienteService.class
 javaee8crud\web\productoServlet.class
 javaee8crud\JAXRSConfiguration.class
+javaee8crud\datos\ClienteDAO.class
+javaee8crud\web\TipoClienteBean.class
 javaee8crud\web\ProductosBean.class

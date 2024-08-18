@@ -21,7 +21,7 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet("/productos")
 public class productoServlet extends HttpServlet {
-
+    
     @Inject
     private ProductosService productosService;
 
@@ -64,7 +64,7 @@ public class productoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String id = request.getParameter("id");
-
+        
         if (id != null && !id.isEmpty()) {
             int productoId = Integer.parseInt(id);
             Producto producto = productosService.findProductoById(productoId);
@@ -73,9 +73,9 @@ public class productoServlet extends HttpServlet {
         } else {
             request.setAttribute("producto", new Producto()); // Para el caso de nuevo producto
         }
-
+        
         request.getRequestDispatcher("/views/productos/nuevo_producto.jsp").forward(request, response);
-
+        
     }
 
     /**
@@ -95,7 +95,7 @@ public class productoServlet extends HttpServlet {
         } else {
             createOrUpdate(request, response);
         }
-
+        
     }
 
     /**
@@ -115,7 +115,7 @@ public class productoServlet extends HttpServlet {
         if (id != null && !id.isEmpty()) {
             int productoId = Integer.parseInt(id);
             Producto producto = productosService.findProductoById(productoId);
-
+            
             productosService.eliminarProducto(producto);
             response.setContentType("application/json");
             response.getWriter().write("{\"status\":\"success\",\"message\":\"Producto eliminado exitosamente.\"}");
@@ -124,15 +124,15 @@ public class productoServlet extends HttpServlet {
             response.getWriter().write("{\"status\":\"error\",\"message\":\"ID de producto no válido.\"}");
         }
     }
-
+    
     private void createOrUpdate(HttpServletRequest request, HttpServletResponse response) throws IOException {
         String id = request.getParameter("id");
         String nombre = request.getParameter("nombre");
         String precioStr = request.getParameter("precio");
         double precio = Double.parseDouble(precioStr);
-
+        
         Producto producto;
-
+        
         if (id == null || id.isEmpty()) {
             // Creación de un nuevo producto
             producto = new Producto();
@@ -141,12 +141,12 @@ public class productoServlet extends HttpServlet {
             int productoId = Integer.parseInt(id);
             producto = productosService.findProductoById(productoId);
         }
-
+        
         producto.setNombre(nombre);
         producto.setPrecio(precio);
-
+        
         try {
-            if (id == null) {
+            if ("".equals(id)) {
                 productosService.registrarProducto(producto); // Guardar nuevo producto
                 response.setContentType("application/json");
                 response.getWriter().write("{\"status\":\"success\",\"message\":\"Producto registrado exitosamente.\"}");
@@ -160,5 +160,5 @@ public class productoServlet extends HttpServlet {
             response.getWriter().write("{\"status\":\"error\",\"message\":\"Error al registrar o actualizar el producto.\"}");
         }
     }
-
+    
 }

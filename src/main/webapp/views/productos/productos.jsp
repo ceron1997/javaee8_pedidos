@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
+            <title>productos</title>
     </head>
     <body>
         <%@ include file="/views/plantilla_bootstrap/layout.jsp" %>

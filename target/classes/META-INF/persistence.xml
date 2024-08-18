@@ -10,7 +10,7 @@
     <class>javaee8crud.domain.Producto</class>
     <properties>
       <!-- Configuración para habilitar logs SQL (opcional) -->
-      <property name="javax.persistence.schema-generation.database.action" value="create"/>
+      <property name="javax.persistence.schema-generation.database.action" value="none"/>
       <property name="eclipselink.logging.level" value="FINE"/>
     </properties>
   </persistence-unit>
