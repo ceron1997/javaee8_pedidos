@@ -31,8 +31,15 @@
                         </li>
 
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Contacto</a>
+                        <!-- Menú desplegable para Pedidos -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Pedidos
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/views/pedidos/nuevo_pedido.jsp">Nuevo Pedido</a></li>
+                                <li><a class="dropdown-item" href="${pageContext.request.contextPath}/views/pedidos/ver_pedidos.jsp">Ver Pedidos</a></li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
