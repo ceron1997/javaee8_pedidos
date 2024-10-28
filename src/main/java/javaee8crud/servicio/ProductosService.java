@@ -35,5 +35,11 @@ public class ProductosService {
         productosDAO.deletePersona(producto);
         return true;
     }
+    
+    
+      public List<Producto> listarProductosLike(String nombre) {
+        return productosDAO.listarProductosLike(nombre);
+    }
+    
 
 }

@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javaee8crud.domain.Cliente;
@@ -21,6 +22,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.google.gson.Gson;
 
 /**
  *
@@ -72,18 +74,15 @@ public class ClienteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String id = request.getParameter("id");
 
-        if (id != null && !id.isEmpty()) {
-            int productoId = Integer.parseInt(id);
-            Cliente producto = clienteService.findProductoById(productoId);
-//            System.out.println(producto);
-            request.setAttribute("cliente", producto);
+        String action = request.getParameter("action");
+        if ("busqueda".equals(action)) {
+            buscarCliente(request, response);
         } else {
-            request.setAttribute("cliente", new Cliente()); // Para el caso de nuevo producto
+            // redireccion 
+            redireccionar(request, response);
         }
 
-        request.getRequestDispatcher("/views/clientes/nuevo_cliente.jsp").forward(request, response);
     }
 
     /**
@@ -190,4 +189,39 @@ public class ClienteServlet extends HttpServlet {
 
     }
 
+    private void buscarCliente(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        System.out.println("servlet bsuqueda ");
+        String searchQuery = request.getParameter("search");
+        List<Cliente> clientes = clienteService.obtenerClienteLikeNombre(searchQuery);
+
+
+        // Verificar si la lista de clientes está vacía
+        String json;    
+        if (clientes.isEmpty()) {
+            json = "{\"mensaje\": \"sin resultados\"}";
+        } else {
+            // Convertir la lista de clientes a JSON
+            json = new Gson().toJson(clientes);
+        }
+
+        // Configurar la respuesta
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(json);
+    }
+
+    private void redireccionar(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        String id = request.getParameter("id");
+
+        if (id != null && !id.isEmpty()) {
+            int productoId = Integer.parseInt(id);
+            Cliente producto = clienteService.findProductoById(productoId);
+//            System.out.println(producto);
+            request.setAttribute("cliente", producto);
+        } else {
+            request.setAttribute("cliente", new Cliente()); // Para el caso de nuevo producto
+        }
+
+        request.getRequestDispatcher("/views/clientes/nuevo_cliente.jsp").forward(request, response);
+    }
 }

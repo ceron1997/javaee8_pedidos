@@ -24,6 +24,14 @@ public class ClienteDAO {
         return query.getResultList();
     }
 
+    public List<Cliente> obtenerClienteLikeNombre(String nombre) {
+        TypedQuery<Cliente> query = em.createQuery("SELECT c FROM Cliente c WHERE c.nombre LIKE :nombre", Cliente.class);
+        query.setParameter("nombre", "%" + nombre + "%");
+        System.out.println("la consulta de jpql es "+query );
+        
+        return query.getResultList();
+    }
+
     public void insertarCliente(Cliente cl) {
         em.persist(cl);
     }

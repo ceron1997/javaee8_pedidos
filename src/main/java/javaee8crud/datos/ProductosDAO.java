@@ -16,6 +16,18 @@ public class ProductosDAO {
         return query.getResultList();
     }
 
+    public List<Producto> listarProductosLike(String p_nombre) {
+        // Crear la consulta con parámetro dinámico
+        TypedQuery<Producto> query = em.createQuery(
+                "SELECT p FROM Producto p WHERE UPPER(p.nombre) LIKE UPPER(:nombre)",
+                Producto.class
+        );
+        // Configurar el parámetro con el valor de búsqueda usando el comodín '%'
+        query.setParameter("nombre", "%" + p_nombre + "%");
+        // Devolver la lista de productos que coinciden con el nombre
+        return query.getResultList();
+    }
+
     public void insertarproducto(Producto prod) {
         em.persist(prod);
     }
@@ -29,8 +41,8 @@ public class ProductosDAO {
         // El método merge() sincroniza el estado del producto con la base de datos.
         em.merge(producto);
     }
-    
-      public void deletePersona(Producto producto) {
+
+    public void deletePersona(Producto producto) {
         em.remove(em.merge(producto)); //Primero se tiene que actualizar el estado del objeto antes de borrarlo
     }
 }

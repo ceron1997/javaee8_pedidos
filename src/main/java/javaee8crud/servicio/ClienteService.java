@@ -24,6 +24,10 @@ public class ClienteService {
         return clienteDAO.obtenerClientes();
     }
 
+    public List<Cliente> obtenerClienteLikeNombre(String nombre) {
+        return clienteDAO.obtenerClienteLikeNombre(nombre);
+    }
+
     public void registrarCliente(Cliente cl) {
         clienteDAO.insertarCliente(cl);
     }
@@ -36,8 +40,8 @@ public class ClienteService {
     public void updateProducto(Cliente producto) {
         clienteDAO.updateProducto(producto);
     }
-    
-        // Método para eliminar un producto
+
+    // Método para eliminar un producto
     public boolean eliminarCliente(Cliente cliente) {
 
         clienteDAO.deleteCliente(cliente);

@@ -18,5 +18,8 @@
 <!-- Bootstrap Datepicker JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 
+<!--para el datatable--> 
+<script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
 <!-- Scripts adicionales -->
 <script src="/JavaEE8CRUD/views/js/utilidades.js"></script>
